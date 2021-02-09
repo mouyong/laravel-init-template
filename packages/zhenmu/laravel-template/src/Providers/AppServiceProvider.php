@@ -5,7 +5,7 @@ namespace ZhenMu\LaravelTemplate\Providers;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
-class TemplateAppServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

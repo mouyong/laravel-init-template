@@ -17,12 +17,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ZhenMu\\LaravelTemplate\\Providers\\TemplateAppServiceProvider"
+                "ZhenMu\\LaravelTemplate\\Providers\\AppServiceProvider"
             ]
         }
-    },
-    "repositories": [{
-            "type": "path",
-            "url": "packages/zhenmu/laravel-template"
-        }]
+    }
 }
