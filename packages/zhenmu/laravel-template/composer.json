@@ -1,0 +1,28 @@
+{
+    "name": "zhenmu/laravel-template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mouyong",
+            "email": "mouyong@iwnweb.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ZhenMu\\LaravelTemplate\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ZhenMu\\LaravelTemplate\\Providers\\TemplateAppServiceProvider"
+            ]
+        }
+    },
+    "repositories": [{
+            "type": "path",
+            "url": "packages/zhenmu/laravel-template"
+        }]
+}

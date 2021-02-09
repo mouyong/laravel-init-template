@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a16c3c541bd99241cab1c21ce8e83ac",
+    "content-hash": "2bafa2c3d4e289d247dc6f2e2194867a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5252,6 +5252,40 @@
                 "source": "https://github.com/webmozart/assert/tree/master"
             },
             "time": "2020-07-08T17:02:28+00:00"
+        },
+        {
+            "name": "zhenmu/laravel-template",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/zhenmu/laravel-template",
+                "reference": "90aee827555c8808b62b6d60c81f560c7d7dcf65"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ZhenMu\\LaravelTemplate\\Providers\\TemplateAppServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ZhenMu\\LaravelTemplate\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mouyong",
+                    "email": "mouyong@iwnweb.com"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         }
     ],
     "packages-dev": [
@@ -7984,7 +8018,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "zhenmu/laravel-template": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
