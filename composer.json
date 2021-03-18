@@ -1,0 +1,26 @@
+{
+    "name": "zhenmu/laravel-init-template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mouyong",
+            "email": "mouyong@iwnweb.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ZhenMu\\LaravelInitTemplate\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ZhenMu\\LaravelInitTemplate\\Providers\\AppServiceProvider"
+            ]
+        }
+    }
+}
