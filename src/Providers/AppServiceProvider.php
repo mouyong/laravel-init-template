@@ -101,7 +101,7 @@ class AppServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($path = __DIR__.'/../../config/laravel-init-template.php', 'laravel-init-template');
 
         $this->publishes([
-            $path => config_path('tests/laravel-init-template.php'),
+            $path => config_path('laravel-init-template.php'),
         ], 'laravel-template-config');
     }
 
