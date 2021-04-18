@@ -23,7 +23,8 @@ trait ResponseTrait
         return $string;
     }
 
-    public function success($data = [], $err_msg = 'success', $err_code = 200, $headers = []) {
+    public function success($data = [], $err_msg = 'success', $err_code = 200, $headers = [])
+    {
         if (is_string($data)) {
             $err_code = $err_msg;
             $err_msg = $data;
@@ -31,6 +32,10 @@ trait ResponseTrait
         }
 
         $err_msg = $this->string2utf8($err_msg);
+
+        if ($err_code === 200 && ($config_err_code = config('laravel-init-template.response.err_code', 200)) !== $err_code) {
+            $err_code = $config_err_code;
+        }
 
         return response()->json(
             compact('err_code', 'err_msg', 'data'),

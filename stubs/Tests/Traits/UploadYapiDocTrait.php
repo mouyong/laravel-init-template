@@ -19,8 +19,7 @@ trait UploadYapiDocTrait
      */
     protected function assertSuccess(TestResponse $response, array $struct = [])
     {
-        $response->assertStatus(200)->assertJson(['err_code' => 0]);
-
+        $response->assertStatus(200)->assertJson(['err_code' => config('laravel-init-template.response.err_code', 200)]);
         // 如果需要验证结构体，并且不是列表数据的结构体
         if ($struct && !empty($response->getContent())) {
             $response->assertJsonStructure([

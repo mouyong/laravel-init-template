@@ -30,12 +30,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        $this->publishConfig();
+        $this->publishYapi();
+
         $this->bootRepository();
         $this->bootBuilder();
         $this->mapRoutes();
         $this->registerMigrations();
         $this->registerCommands();
-        $this->publishYapi();
     }
 
     private function bootRepository()
@@ -62,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
                 return $this->get(request('columns', ['*']));
             }
 
-            $per_page = (int) request('per_page', 20);
+            $per_page = (int) request(config('laravel-init-template.request.per_page', 'per_page'), 20);
 
             return $this->paginate($per_page <= 100 ? $per_page : 100, request('columns', ['*']));
         };
@@ -92,6 +94,15 @@ class AppServiceProvider extends ServiceProvider
         $this->commands([
             AddUser::class,
         ]);
+    }
+
+    private function publishConfig()
+    {
+        $this->mergeConfigFrom($path = __DIR__.'/../../config/laravel-init-template.php', 'laravel-init-template');
+
+        $this->publishes([
+            $path => config_path('tests/laravel-init-template.php'),
+        ], 'laravel-template-config');
     }
 
     private function publishYapi()
