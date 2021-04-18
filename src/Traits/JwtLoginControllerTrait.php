@@ -4,15 +4,12 @@ namespace ZhenMu\LaravelInitTemplate\Traits;
 
 use App\Models\User;
 use Illuminate\Auth\GuardHelpers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\UnauthorizedException;
 
 trait JwtLoginControllerTrait
 {
-    protected $model = User::class;
-
-    protected $loginField = 'name';
-
     /**
      * Get a JWT via given credentials.
      *
@@ -20,17 +17,14 @@ trait JwtLoginControllerTrait
      */
     public function login()
     {
-        $data = request()->validate([
-            'mobile' => 'required',
-            'password' => 'required',
-        ], [
-            'mobile.required' => '用户名必填', // 前端传过来的字段是这个，懒得修改，直接用前端传的字段
-        ]);
+        $this->validateLogin(\request());
 
-        $credentials['name'] = $data['mobile'];
+        $data = request()->all();
+
+        $credentials['username'] = $data[$this->username()];
         $credentials['password'] = $data['password'];
 
-        $user = $this->model::query()->where($this->model::username($this->loginField), $credentials['name'])->first();
+        $user = app($this->model())->where($this->username(), $credentials['username'])->first();
 
         throw_if(is_null($user), UnauthorizedException::class, '登录失败，账号不存在', 401);
         throw_if(! $token = $this->guard()->attempt($credentials), UnauthorizedException::class, '登录失败，密码错误', 401);
@@ -79,13 +73,32 @@ trait JwtLoginControllerTrait
      */
     protected function respondWithToken($token)
     {
-        throw_if(empty($this->guard()->user()->tenant), UnauthorizedException::class, '未获取到租户信息');
-
         return $this->success([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
         ]);
+    }
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
+
+    protected function model()
+    {
+        return User::class;
     }
 
     /**
