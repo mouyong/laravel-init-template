@@ -97,7 +97,7 @@ class AppServiceProvider extends ServiceProvider
     private function publishYapi()
     {
         $this->publishes([
-            __DIR__.'/../../stubs/Yapi' => base_path('tests'),
-        ], 'laravel-template-migrations');
+            __DIR__.'/../../stubs/Yapi' => base_path('tests/Yapi'),
+        ], 'laravel-template-yapi');
     }
 }
