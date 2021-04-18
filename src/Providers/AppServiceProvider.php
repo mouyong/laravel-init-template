@@ -69,14 +69,14 @@ class AppServiceProvider extends ServiceProvider
 
     private function mapRoutes()
     {
-        if (file_exists($path = __DIR__.'/../routes/api.php')) {
+        if (file_exists($path = __DIR__.'/../../routes/api.php')) {
             Route::prefix('api')->group($path);
         }
     }
 
     private function registerMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),

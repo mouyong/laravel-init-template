@@ -15,10 +15,10 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('province')->comment('商户所在省');
-            $table->string('city')->comment('商户所在市');
-            $table->string('county')->comment('商户所在区县');
-            $table->string('address')->comment('商户地址');
+            $table->string('province')->comment('省');
+            $table->string('city')->comment('市');
+            $table->string('county')->comment('区县');
+            $table->string('address')->comment('地址');
             $table->string('longitude')->comment('经度');
             $table->string('latitude')->comment('纬度');
             $table->morphs('addressable');
