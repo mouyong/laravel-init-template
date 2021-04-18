@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use ZhenMu\LaravelInitTemplate\Console\Commands\AddUser;
+use ZhenMu\LaravelInitTemplate\Models\Address;
 use ZhenMu\LaravelInitTemplate\Repositories\UserRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,6 +41,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $classMap = [
             UserRepository::class => 'App\Repositories\UserRepository',
+
+            Address::class => 'App\Models\Address',
         ];
 
         foreach ($classMap as $k => $v) {

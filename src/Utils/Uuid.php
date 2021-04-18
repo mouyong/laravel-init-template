@@ -1,6 +1,6 @@
 <?php
 
-namespace ZhenMu\LaravelInitTemplate\Traits;
+namespace ZhenMu\LaravelInitTemplate\Utils;
 
 class Uuid
 {
