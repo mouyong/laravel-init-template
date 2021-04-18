@@ -8,8 +8,8 @@ return [
 
     'config' => [
         'default' => [
-            'id' => '583',
-            'token' => 'f06827a65ccaa9f7b3d4d61cbd27604780332502cc9ee812985fbf788579c3da',
+            'id' => '',
+            'token' => '',
         ]
     ],
 
@@ -19,8 +19,7 @@ return [
         // 公共的请求参数,query部分
         'query' => [
             'page' => ['plan' => '页码，默认1'],
-            'page_size' => ['plan' => '每页数量，不超过200，默认15'],
-            'is_all' => ['plan' => '是否获取全部数据，不超过1000条'],
+            'per_page' => ['plan' => '每页数量，不超过200，默认15'],
         ],
 
         // 公共的响应参数
