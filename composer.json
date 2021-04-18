@@ -22,5 +22,8 @@
                 "ZhenMu\\LaravelInitTemplate\\Providers\\AppServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "cblink/yapi-doc": "dev-master"
     }
 }

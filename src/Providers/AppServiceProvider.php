@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
         $this->mapRoutes();
         $this->registerMigrations();
         $this->registerCommands();
+        $this->publishYapi();
     }
 
     private function bootRepository()
@@ -82,7 +83,7 @@ class AppServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'laravel-template-migrations');
     }
 
@@ -91,5 +92,12 @@ class AppServiceProvider extends ServiceProvider
         $this->commands([
             AddUser::class,
         ]);
+    }
+
+    private function publishYapi()
+    {
+        $this->publishes([
+            __DIR__.'/../../stubs/Yapi' => base_path('tests'),
+        ], 'laravel-template-migrations');
     }
 }
