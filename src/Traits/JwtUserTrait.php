@@ -47,7 +47,7 @@ trait JwtUserTrait
         return [];
     }
 
-    public static function username()
+    public static function username($username = null)
     {
         $username = \request('username');
 
@@ -57,6 +57,6 @@ trait JwtUserTrait
         $value = filter_var($username, FILTER_VALIDATE_EMAIL);
         if ($value) return 'email';
 
-        return 'name';
+        return $username ?? 'name';
     }
 }
