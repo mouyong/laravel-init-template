@@ -10,7 +10,7 @@
     "minimum-stability": "dev",
     "require": {
         "ext-json": "*",
-        "tymon/jwt-auth": "2.0.x-dev"
+        "tymon/jwt-auth": "2.0.x-dev|^1"
     },
     "autoload": {
         "psr-4": {
