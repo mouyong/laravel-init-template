@@ -1,15 +1,12 @@
 <?php
 
-
 namespace Tests\Yapi;
-
 
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class YapiTest extends TestCase
 {
-
     /**
      * A basic test example.
      *
@@ -21,7 +18,7 @@ class YapiTest extends TestCase
 
         Artisan::call('upload:yapi');
 
-        dump("\n" . Artisan::output());
+        dump(Artisan::output());
 
         $this->assertTrue(true);
     }
