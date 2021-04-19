@@ -1,6 +1,6 @@
 <?php
 
-namespace ZhenMu\LaravelInitTemplate\Http\Controllers;
+namespace ZhenMu\LaravelInitTemplate\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Controller;
 use ZhenMu\LaravelInitTemplate\Traits\JwtLoginControllerTrait;

@@ -59,14 +59,22 @@ class AppServiceProvider extends ServiceProvider
 
     private function bootBuilder()
     {
-        $pagenateFunc = function () {
-            if (request('all') || request('export')) {
-                return $this->get(request('columns', ['*']));
+        $pagenateFunc = function ($columns = [], $per_page = null) {
+            if (empty($columns)) {
+                $columns = \request('columns', ['*']);
             }
 
-            $per_page = (int) request(config('laravel-init-template.request.per_page', 'per_page'), 20);
+            if (request('all') || request('export')) {
+                return $this->get($columns);
+            }
 
-            return $this->paginate($per_page <= 100 ? $per_page : 100, request('columns', ['*']));
+            if (is_null($per_page)) {
+                $per_page = (int) request(config('laravel-init-template.request.per_page', 'per_page'), 20);
+            }
+
+            $per_page <= 100 ? $per_page : 100;
+
+            return $this->paginate($per_page, $columns);
         };
 
         \Illuminate\Database\Eloquent\Builder::macro('result', $pagenateFunc);
