@@ -20,7 +20,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ZhenMu\\LaravelInitTemplate\\Providers\\AppServiceProvider"
+                "ZhenMu\\LaravelInitTemplate\\Providers\\AppServiceProvider",
+                "ZhenMu\\LaravelInitTemplate\\Providers\\SqlLogServiceProvider"
             ]
         }
     },
