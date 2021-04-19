@@ -68,7 +68,7 @@ trait ResponseTrait
     {
         return function (\Throwable $e) {
             if ($e instanceof \Illuminate\Validation\ValidationException) {
-                return $this->fail(head(head($e->errors())), $e->getCode());
+                return $this->fail(head(head($e->errors())), $e->status);
             }
 
             if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
