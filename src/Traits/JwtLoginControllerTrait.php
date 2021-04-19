@@ -73,10 +73,13 @@ trait JwtLoginControllerTrait
      */
     protected function respondWithToken($token)
     {
+        $timeout =  $this->guard()->factory()->getTTL() * 60;
+
         return $this->success([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 60,
+            'expires_in' => $timeout,
+            'expires_at' => now()->addSeconds($timeout)->toDateTimeString(),
         ]);
     }
 
