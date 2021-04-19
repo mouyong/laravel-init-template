@@ -99,6 +99,16 @@ trait JwtLoginControllerTrait
         ]);
     }
 
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    protected function username()
+    {
+        return 'name';
+    }
+
     protected function model()
     {
         return User::class;
