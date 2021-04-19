@@ -31,6 +31,12 @@ trait ResponseTrait
             $data = [];
         }
 
+        // 处理 meta 数据
+        $meta = [];
+        if (isset($data['data']) && isset($data['meta'])) {
+            extract($data);
+        }
+
         $err_msg = $this->string2utf8($err_msg);
 
         if ($err_code === 200 && ($config_err_code = config('laravel-init-template.response.err_code', 200)) !== $err_code) {
@@ -38,7 +44,7 @@ trait ResponseTrait
         }
 
         return response()->json(
-            compact('err_code', 'err_msg', 'data'),
+            array_filter(compact('err_code', 'err_msg', 'data', 'meta')),
             Response::HTTP_OK,
             $headers,
             \JSON_UNESCAPED_SLASHES|\JSON_UNESCAPED_UNICODE

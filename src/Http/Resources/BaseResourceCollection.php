@@ -28,9 +28,11 @@ class BaseResourceCollection extends ResourceCollection
             array_push($params, $item);
         }
 
+        list($data, $meta) = $params;
+
         return $this->success([
-            'data' => head($params),
-            'meta' => end($params),
+            'data' => $data,
+            'meta' => $meta,
         ]);
     }
 }
