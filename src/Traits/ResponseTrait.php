@@ -43,8 +43,10 @@ trait ResponseTrait
             $err_code = $config_err_code;
         }
 
+        $res = compact('err_code', 'err_msg', 'data') + array_filter(compact('meta'));
+
         return response()->json(
-            array_filter(compact('err_code', 'err_msg', 'data', 'meta')),
+            $res,
             Response::HTTP_OK,
             $headers,
             \JSON_UNESCAPED_SLASHES|\JSON_UNESCAPED_UNICODE
