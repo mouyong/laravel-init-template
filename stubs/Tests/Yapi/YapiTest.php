@@ -16,11 +16,16 @@ class YapiTest extends TestCase
     {
         $this->app['config']->set('yapi', require 'yapi.php');
 
-        Artisan::call('upload:yapi');
+        $code = Artisan::call('upload:yapi');
 
-        dump(Artisan::output());
+        if ($code === 0) {
+            dump('上传成功');
+        }
+
+        if ($output = Artisan::output()) {
+            dump($output);
+        }
 
         $this->assertTrue(true);
     }
-
 }
