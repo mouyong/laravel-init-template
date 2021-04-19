@@ -8,11 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use ZhenMu\LaravelInitTemplate\Traits\JwtUserTrait;
+use ZhenMu\LaravelInitTemplate\Traits\ModelSerializeDateTrait;
 
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
     use JwtUserTrait;
+    use ModelSerializeDateTrait;
 
     /**
      * The attributes that are mass assignable.
