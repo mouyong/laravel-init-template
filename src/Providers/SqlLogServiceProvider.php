@@ -35,6 +35,8 @@ class SqlLogServiceProvider extends ServiceProvider
             return;
         }
 
+        $this->app['config']->set('logging.channels.sql', config('laravel-init-template.logging.sql'));
+
         \Illuminate\Support\Facades\DB::listen(function (\Illuminate\Database\Events\QueryExecuted $query) {
             $sqlWithPlaceholders = str_replace(['%', '?'], ['%%', '%s'], $query->sql);
             $bindings            = $query->connection->prepareBindings($query->bindings);
