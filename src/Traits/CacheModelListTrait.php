@@ -2,6 +2,8 @@
 
 namespace ZhenMu\LaravelInitTemplate\Traits;
 
+use Illuminate\Database\Eloquent\Model;
+
 trait CacheModelListTrait
 {
     public static function refreshModelList()
@@ -25,8 +27,9 @@ trait CacheModelListTrait
         return static::class;
     }
 
-    protected static function getModelListCacheKey()
+    public static function getModelListCacheKey()
     {
+        /** @var Model $instance */
         $instance = new static();
 
         $cacheKey = url_cache_key();

@@ -2,6 +2,8 @@
 
 namespace ZhenMu\LaravelInitTemplate\Traits;
 
+use Illuminate\Database\Eloquent\Model;
+
 trait CacheModelDetailTrait
 {
     public static function refreshModelDetail()
@@ -13,7 +15,6 @@ trait CacheModelDetailTrait
 
     public static function getFromDetailCache()
     {
-        dd(static::getModelDetailCacheKey());
         return \Cache::remember(static::getModelDetailCacheKey(), static::getDetailCacheTtl(), function () {
             return static::getModelDetail();
         });
@@ -26,8 +27,9 @@ trait CacheModelDetailTrait
         return static::class;
     }
 
-    protected static function getModelDetailCacheKey()
+    public static function getModelDetailCacheKey()
     {
+        /** @var Model $instance */
         $instance = new static();
 
         $cacheKeyName = $instance->getKeyName();
