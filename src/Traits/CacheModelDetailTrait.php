@@ -29,7 +29,17 @@ trait CacheModelDetailTrait
     {
         $instance = new static();
 
-        return sprintf("model:%s:%s:%s", static::getModelClass(), $instance->getKeyName(), $instance->getKey());
+        $cacheKeyName = $instance->getKeyName();
+        if (method_exists($instance, 'customModelDetailKeyNameCacheKey')) {
+            $cacheKey = $instance->customModelDetailKeyNameCacheKey();
+        }
+
+        $cacheKey = $instance->getKey();
+        if (method_exists($instance, 'customModelDetailCacheKey')) {
+            $cacheKey = $instance->customModelDetailCacheKey();
+        }
+
+        return sprintf("model:%s:detail:%s:%s", static::getModelClass(), $cacheKeyName, $cacheKey);
     }
 
     /**
