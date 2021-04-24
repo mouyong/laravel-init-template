@@ -45,7 +45,7 @@ if (! function_exists('after_seconds')) {
      * Get Current Request Cache Key.
      *
      * @param int $value
-     * @return \Illuminate\Support\Carbon
+     * @return \Carbon\Carbon
      */
     function after_seconds($value = 1)
     {
@@ -58,7 +58,7 @@ if (! function_exists('after_minutes')) {
      * Get Current Request Cache Key.
      *
      * @param int $value
-     * @return \Illuminate\Support\Carbon
+     * @return \Carbon\Carbon
      */
     function after_minutes($value = 1)
     {
@@ -71,7 +71,7 @@ if (! function_exists('after_hours')) {
      * Get Current Request Cache Key.
      *
      * @param int $value
-     * @return \Illuminate\Support\Carbon
+     * @return \Carbon\Carbon
      */
     function after_hours($value = 1)
     {
@@ -84,7 +84,7 @@ if (! function_exists('after_days')) {
      * Get Current Request Cache Key.
      *
      * @param int $value
-     * @return \Illuminate\Support\Carbon
+     * @return \Carbon\Carbon
      */
     function after_days($value = 1)
     {
@@ -97,7 +97,7 @@ if (! function_exists('after_months')) {
      * Get Current Request Cache Key.
      *
      * @param int $value
-     * @return \Illuminate\Support\Carbon
+     * @return \Carbon\Carbon
      */
     function after_months($value = 1)
     {
@@ -110,7 +110,7 @@ if (! function_exists('after_years')) {
      * Get Current Request Cache Key.
      *
      * @param int $value
-     * @return \Illuminate\Support\Carbon
+     * @return \Carbon\Carbon
      */
     function after_years($value = 1)
     {
