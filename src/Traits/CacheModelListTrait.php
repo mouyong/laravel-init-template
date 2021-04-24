@@ -40,7 +40,7 @@ trait CacheModelListTrait
     /**
      * @return \Carbon\Carbon|null null to cache forever
      */
-    protected static function getListCacheTtl()
+    public static function getListCacheTtl()
     {
         return after_minutes(5);
     }

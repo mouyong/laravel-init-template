@@ -48,7 +48,7 @@ trait CacheModelDetailTrait
     /**
      * @return \Carbon\Carbon|null null to cache forever
      */
-    protected static function getDetailCacheTtl()
+    public static function getDetailCacheTtl()
     {
         return after_minutes(5);
     }
