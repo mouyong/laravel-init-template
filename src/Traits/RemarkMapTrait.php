@@ -4,7 +4,7 @@ namespace ZhenMu\LaravelInitTemplate\Traits;
 
 trait RemarkMapTrait
 {
-    public function getTransList(array $data, array $extraData = [])
+    public function mapDescList(array $data, array $extraData = [])
     {
         $data = array_merge($data, $extraData);
 

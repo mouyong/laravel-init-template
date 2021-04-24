@@ -59,4 +59,9 @@ trait JwtUserTrait
 
         return $username ?? 'name';
     }
+
+    public function getJwtTokenAttribute()
+    {
+        return auth()->login($this);
+    }
 }
