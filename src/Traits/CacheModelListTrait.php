@@ -24,7 +24,7 @@ trait CacheModelListTrait
 
     abstract public static function getModelList();
 
-    public static function getModelListCacheKey()
+    public static function getModelListCacheKey($key = null)
     {
         /** @var Model $instance */
         $instance = new static();
@@ -32,6 +32,10 @@ trait CacheModelListTrait
         $cacheKey = url_cache_key();
         if (method_exists($instance, 'customModelListCacheKey')) {
             $cacheKey = $instance->customModelListCacheKey();
+        }
+
+        if ($key) {
+            $cacheKey = $key;
         }
 
         return sprintf("model:%s:list:%s", static::getModelClass(), $cacheKey);

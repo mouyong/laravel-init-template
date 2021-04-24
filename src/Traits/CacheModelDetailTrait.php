@@ -27,7 +27,7 @@ trait CacheModelDetailTrait
         return static::class;
     }
 
-    public static function getModelDetailCacheKey()
+    public static function getModelDetailCacheKey($key = null)
     {
         /** @var Model $instance */
         $instance = new static();
@@ -40,6 +40,10 @@ trait CacheModelDetailTrait
         $cacheKey = url_cache_key();
         if (method_exists($instance, 'customModelDetailCacheKey')) {
             $cacheKey = $instance->customModelDetailCacheKey();
+        }
+
+        if ($key) {
+            $cacheKey = $key;
         }
 
         return sprintf("model:%s:detail:%s:%s", static::getModelClass(), $cacheKeyName, $cacheKey);
