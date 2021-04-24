@@ -39,3 +39,81 @@ if (! function_exists('full_url_cache_key')) {
         return url_cache_key(true);
     }
 }
+
+if (! function_exists('after_seconds')) {
+    /**
+     * Get Current Request Cache Key.
+     *
+     * @param int $value
+     * @return \Illuminate\Support\Carbon
+     */
+    function after_seconds($value = 1)
+    {
+        return now()->addSeconds($value);
+    }
+}
+
+if (! function_exists('after_minutes')) {
+    /**
+     * Get Current Request Cache Key.
+     *
+     * @param int $value
+     * @return \Illuminate\Support\Carbon
+     */
+    function after_minutes($value = 1)
+    {
+        return now()->addMinutes($value);
+    }
+}
+
+if (! function_exists('after_hours')) {
+    /**
+     * Get Current Request Cache Key.
+     *
+     * @param int $value
+     * @return \Illuminate\Support\Carbon
+     */
+    function after_hours($value = 1)
+    {
+        return now()->addHours($value);
+    }
+}
+
+if (! function_exists('after_days')) {
+    /**
+     * Get Current Request Cache Key.
+     *
+     * @param int $value
+     * @return \Illuminate\Support\Carbon
+     */
+    function after_days($value = 1)
+    {
+        return now()->addDays($value);
+    }
+}
+
+if (! function_exists('after_months')) {
+    /**
+     * Get Current Request Cache Key.
+     *
+     * @param int $value
+     * @return \Illuminate\Support\Carbon
+     */
+    function after_months($value = 1)
+    {
+        return now()->addMonths($value);
+    }
+}
+
+if (! function_exists('after_years')) {
+    /**
+     * Get Current Request Cache Key.
+     *
+     * @param int $value
+     * @return \Illuminate\Support\Carbon
+     */
+    function after_years($value = 1)
+    {
+        return now()->addYears($value);
+    }
+}
