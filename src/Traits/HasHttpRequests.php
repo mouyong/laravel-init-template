@@ -36,7 +36,7 @@ trait HasHttpRequests
         'timeout' => 3,
         'http_errors' => false,
         'curl' => [
-            CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
+            \CURLOPT_IPRESOLVE => \CURL_IPRESOLVE_V4,
         ],
     ];
 
@@ -220,10 +220,13 @@ trait HasHttpRequests
         return \GuzzleHttp\choose_handler();
     }
 
-    abstract public function castResponseToType(ResponseInterface $response, $type = null);
+    public function castResponseToType(ResponseInterface $response, $type = null)
+    {
+        return $response;
+    }
 
     public function detectAndCastResponseToType(ResponseInterface $response, $type = null)
     {
-        return $response;
+        return $this->castResponseToType($response, $type);
     }
 }
