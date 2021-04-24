@@ -4,15 +4,16 @@ namespace ZhenMu\LaravelInitTemplate\Traits;
 
 trait CacheModelDetailTrait
 {
-    public static function refreshModel()
+    public static function refreshModelDetail()
     {
         \Cache::forget(static::getModelDetailCacheKey());
 
-        return static::getFromCache();
+        return static::getFromDetailCache();
     }
 
-    public static function getFromCache()
+    public static function getFromDetailCache()
     {
+        dd(static::getModelDetailCacheKey());
         return \Cache::remember(static::getModelDetailCacheKey(), static::getDetailCacheTtl(), function () {
             return static::getModelDetail();
         });
@@ -31,10 +32,10 @@ trait CacheModelDetailTrait
 
         $cacheKeyName = $instance->getKeyName();
         if (method_exists($instance, 'customModelDetailKeyNameCacheKey')) {
-            $cacheKey = $instance->customModelDetailKeyNameCacheKey();
+            $cacheKeyName = $instance->customModelDetailKeyNameCacheKey();
         }
 
-        $cacheKey = $instance->getKey();
+        $cacheKey = url_cache_key();
         if (method_exists($instance, 'customModelDetailCacheKey')) {
             $cacheKey = $instance->customModelDetailCacheKey();
         }
