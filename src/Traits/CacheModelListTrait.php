@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 trait CacheModelListTrait
 {
+    use CacheModelDetailTrait;
+
     public static function refreshModelList()
     {
         \Cache::forget(static::getModelListCacheKey());
@@ -21,11 +23,6 @@ trait CacheModelListTrait
     }
 
     abstract public static function getModelList();
-
-    public static function getModelClass()
-    {
-        return static::class;
-    }
 
     public static function getModelListCacheKey()
     {
