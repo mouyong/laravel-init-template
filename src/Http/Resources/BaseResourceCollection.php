@@ -19,14 +19,15 @@ class BaseResourceCollection extends ResourceCollection
     {
         $params = [$this->toArray($request)];
 
+        $meta = [];
         if ($this->resource instanceof AbstractPaginator) {
-            $item = [
+            $meta = [
                     'current_page' => $this->currentPage(),
                     'per_page' => $this->perPage()
                 ] + ($this->resource instanceof LengthAwarePaginator ? ['total' => $this->total()] : []);
-
-            array_push($params, $item);
         }
+
+        array_push($params, $meta);
 
         list($data, $meta) = $params;
 
