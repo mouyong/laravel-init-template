@@ -18,7 +18,7 @@ trait CacheModelListTrait
         });
     }
 
-    abstract public static function getModelDetail();
+    abstract public static function getModelList();
 
     public static function getModelClass()
     {
