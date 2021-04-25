@@ -119,6 +119,25 @@ trait HasHttpRequests
         return $this->middlewares;
     }
 
+    public function getResponseType()
+    {
+        return null;
+    }
+
+    public function getRawResponseType()
+    {
+        return null;
+    }
+
+    public function request($url, $method = 'GET', $options = [])
+    {
+        $response = $this->performRequest($url, $method, $options);
+
+        $response = $this->detectAndCastResponseToType($response, $this->getResponseType());
+
+        return $response;
+    }
+
     /**
      * Make a request.
      *
@@ -130,7 +149,7 @@ trait HasHttpRequests
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function request($url, $method = 'GET', $options = []): ResponseInterface
+    public function performRequest($url, $method = 'GET', $options = []): ResponseInterface
     {
         $method = strtoupper($method);
 
@@ -142,6 +161,23 @@ trait HasHttpRequests
             $options['base_uri'] = $this->baseUri;
         }
 
+        $response = $this->getHttpClient()->request($method, $url, $options);
+        $response->getBody()->rewind();
+
+        return $response;
+    }
+
+    public function rawRequest($url, $method = 'GET', $options = [])
+    {
+        $response = $this->performRawRequest($url, $method, $options);
+
+        $response = $this->detectAndCastResponseToType($response, $this->getRawResponseType());
+
+        return $response;
+    }
+
+    public function performRawRequest($url, $method = 'GET', $options = [])
+    {
         $response = $this->getHttpClient()->request($method, $url, $options);
         $response->getBody()->rewind();
 
