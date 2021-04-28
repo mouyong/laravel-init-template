@@ -67,6 +67,10 @@ trait ResponseTrait
     public function renderableHandle()
     {
         return function (\Throwable $e) {
+            if ($e instanceof \Illuminate\Auth\AuthenticationException) {
+                return $this->fail('登录失败，请稍后重试', $e->getCode() ?: 401);
+            }
+
             if ($e instanceof \Illuminate\Validation\ValidationException) {
                 return $this->fail(head(head($e->errors())), $e->status);
             }
