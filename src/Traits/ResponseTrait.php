@@ -48,7 +48,9 @@ trait ResponseTrait
         return response()->json(
             $res,
             Response::HTTP_OK,
-            $headers,
+            array_merge([
+                'Access-Control-Allow-Origin' => '*'
+            ], $headers),
             \JSON_UNESCAPED_SLASHES|\JSON_UNESCAPED_UNICODE
         );
     }
@@ -76,7 +78,7 @@ trait ResponseTrait
             }
 
             if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-                return $this->fail('404 Not Found.', $e->getStatusCode());
+                return $this->fail('404 Data Not Found.', $e->getStatusCode());
             }
 
             logger('error', [
