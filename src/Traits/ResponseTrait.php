@@ -70,7 +70,7 @@ trait ResponseTrait
     {
         return function (\Throwable $e) {
             if ($e instanceof \Illuminate\Auth\AuthenticationException) {
-                return $this->fail('登录失败，请稍后重试', $e->getCode() ?: 401);
+                return $this->fail('登录失败，请稍后重试', $e->getCode() ?: config('laravel-init-template.auth.unauthorize_code', 401));
             }
 
             if ($e instanceof \Illuminate\Validation\ValidationException) {

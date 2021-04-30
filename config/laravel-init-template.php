@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'auth' => [
+        'unauthorize_code' => 401,
+    ],
+
     'request' => [
         'page' => 'page',
         'per_page' => 'per_page',
