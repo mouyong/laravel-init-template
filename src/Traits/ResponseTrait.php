@@ -78,7 +78,11 @@ trait ResponseTrait
             }
 
             if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-                return $this->fail('404 Data Not Found.', $e->getStatusCode());
+                if ($e->getPrevious() instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+                    return $this->fail('404 Data Not Found.', $e->getStatusCode());
+                }
+
+                return $this->fail('404 Url Not Found.', $e->getStatusCode());
             }
 
             logger('error', [
