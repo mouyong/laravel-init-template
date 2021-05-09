@@ -10,7 +10,8 @@
     "minimum-stability": "dev",
     "require": {
         "ext-json": "*",
-        "tymon/jwt-auth": "2.0.x-dev|^1"
+        "tymon/jwt-auth": "2.0.x-dev|^1",
+        "symfony/cache": "^3.3 || ^4.3 || ^5.0"
     },
     "autoload": {
         "psr-4": {
