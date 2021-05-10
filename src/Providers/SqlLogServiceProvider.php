@@ -35,6 +35,12 @@ class SqlLogServiceProvider extends ServiceProvider
             return;
         }
 
+        $config = config('laravel-init-template.logging.sql');
+
+        if ($config['enable'] === false) {
+            return;
+        }
+
         $this->app['config']->set('logging.channels.sql', config('laravel-init-template.logging.sql'));
 
         \Illuminate\Support\Facades\DB::listen(function (\Illuminate\Database\Events\QueryExecuted $query) {

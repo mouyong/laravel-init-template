@@ -17,6 +17,8 @@ return [
 
     'logging' => [
         'sql' => [
+            'enable' => env('APP_SQL_LOG_ENABLE', false),
+
             'driver' => 'daily',
             'path'   => storage_path('logs/mysql-logs/mysql.log'),
             'level'  => 'debug',
