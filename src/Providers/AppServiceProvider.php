@@ -33,28 +33,9 @@ class AppServiceProvider extends ServiceProvider
         $this->publishConfig();
         $this->publishYapi();
 
-        $this->bootRepository();
         $this->bootBuilder();
         $this->mapRoutes();
         $this->registerMigrations();
-        $this->registerCommands();
-    }
-
-    private function bootRepository()
-    {
-        $classMap = [
-            UserRepository::class => 'App\Repositories\UserRepository',
-
-            Address::class => 'App\Models\Address',
-        ];
-
-        foreach ($classMap as $k => $v) {
-            if (! class_exists($v)) {
-                continue;
-            }
-
-            $this->app->bind($k, $v);
-        }
     }
 
     private function bootBuilder()
@@ -95,13 +76,6 @@ class AppServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../database/migrations' => database_path('migrations'),
         ], 'laravel-template-migrations');
-    }
-
-    private function registerCommands()
-    {
-        $this->commands([
-            AddUser::class,
-        ]);
     }
 
     private function publishConfig()
