@@ -9,15 +9,16 @@ class AES
      * @param string $key
      * @param string $iv
      * @param int    $option
+     * @param string|null $method
      *
      * @return string
      */
-    public static function encrypt(string $text, string $key, string $iv, int $option = \OPENSSL_RAW_DATA): string
+    public static function encrypt(string $text, string $key, string $iv, int $option = \OPENSSL_RAW_DATA, $method = null): string
     {
         self::validateKey($key);
         self::validateIv($iv);
 
-        return openssl_encrypt($text, self::getMode($key), $key, $option, $iv);
+        return openssl_encrypt($text, $method ?: self::getMode($key), $key, $option, $iv);
     }
 
     /**
@@ -29,7 +30,7 @@ class AES
      *
      * @return string
      */
-    public static function decrypt(string $cipherText, string $key, string $iv, int $option = OPENSSL_RAW_DATA, $method = null): string
+    public static function decrypt(string $cipherText, string $key, string $iv, int $option = \OPENSSL_RAW_DATA, $method = null): string
     {
         self::validateKey($key);
         self::validateIv($iv);
