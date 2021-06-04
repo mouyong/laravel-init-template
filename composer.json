@@ -10,8 +10,10 @@
     "minimum-stability": "dev",
     "require": {
         "ext-json": "*",
+        "zhenmu/support": "dev-master",
         "tymon/jwt-auth": "2.0.x-dev|^1",
-        "symfony/cache": "^3.3 || ^4.3 || ^5.0"
+        "symfony/cache": "^3.3 || ^4.3 || ^5.0",
+        "cblink/yapi-doc": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -28,8 +30,5 @@
                 "ZhenMu\\LaravelInitTemplate\\Providers\\SqlLogServiceProvider"
             ]
         }
-    },
-    "require-dev": {
-        "cblink/yapi-doc": "dev-master"
     }
 }
