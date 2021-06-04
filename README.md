@@ -92,7 +92,7 @@ class Demo extends BaseModel
 
 - 模型配置，引入 JwtUserTrait;
 
-```
+```app/Models/Admin.php
 use ZhenMu\LaravelInitTemplate\Traits\JwtUserTrait;
 
 class Admin extends BaseModel
@@ -104,7 +104,7 @@ class Admin extends BaseModel
 
 - 控制器配置，引入 JwtLoginControllerTrait;
 
-```
+```app/Http/Controllers/AuthController.php
 use ZhenMu\LaravelInitTemplate\Traits\JwtLoginControllerTrait;
 
 class AuthController extends Controller
@@ -126,7 +126,7 @@ class AuthController extends Controller
 
 - 路由配置，添加登录相关路由
 
-```
+```api.php
 Route::prefix('auth')->middleware('auth')->group(function () {
     // 用户登录管理
     Route::post('login', [AuthController::class, 'login'])->withoutMiddleware(['auth']);
