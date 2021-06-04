@@ -97,8 +97,9 @@ use ZhenMu\LaravelInitTemplate\Traits\JwtUserTrait;
 
 class Admin extends BaseModel
 {
-	use JwtUserTrait;
+    use JwtUserTrait;
 }
+
 ```
 
 - 控制器配置，引入 JwtLoginControllerTrait;
@@ -120,6 +121,7 @@ class AuthController extends Controller
         $this->middleware('auth', ['except' => ['login']]);
     }
 }
+
 ```
 
 - 路由配置，添加登录相关路由
