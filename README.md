@@ -183,6 +183,12 @@ Route::prefix('auth')->middleware('auth')->group(function () {
 });
 ```
 
+### 部署
+
+```shell
+$ git subtree add -P deploy/docker/ https://codeup.aliyun.com/5f10fd25d2481460393375d0/base/deploy/deploy-docker.git
+```
+
 ## License
 
 MIT
