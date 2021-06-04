@@ -6,8 +6,9 @@
 ## Installing
 
 ```shell
-$ composer require zhenmu/laravel-init-template -vvv
-$ php artisan vendor:publish --provider "ZhenMu\LaravelInitTemplate\Providers\AppServiceProvider"
+composer require zhenmu/laravel-init-template -vvv
+
+php artisan vendor:publish --provider "ZhenMu\LaravelInitTemplate\Providers\AppServiceProvider"
 ```
 
 ## Usage
@@ -186,7 +187,7 @@ Route::prefix('auth')->middleware('auth')->group(function () {
 ### 部署
 
 ```shell
-$ git subtree add -P deploy/docker/ https://codeup.aliyun.com/5f10fd25d2481460393375d0/base/deploy/deploy-docker.git
+git subtree add -P deploy/docker/ git@codeup.aliyun.com:5f10fd25d2481460393375d0/base/deploy/deploy-docker.git master
 ```
 
 ## License
