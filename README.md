@@ -12,6 +12,47 @@ $ php artisan vendor:publish --provider "ZhenMu\LaravelInitTemplate\Providers\Ap
 
 ## Usage
 
+### 项目
+
+- app.php
+```
+'name' => env('APP_NAME', 'Laravel'),
+'env' => env('APP_ENV', 'production'),
+'debug' => (bool) env('APP_DEBUG', false),
+'url' => env('APP_URL', 'http://localhost'),
+'timezone' => 'PRC',
+'locale' => 'zh_CN',
+'faker_locale' => 'zh_CN',
+```
+- .env
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+BROADCAST_DRIVER=redis
+CACHE_DRIVER=redis
+FILESYSTEM_DRIVER=local
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
+SESSION_LIFETIME=120
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+```
+
+### sql 日志
+
+日志路径：storage/logs/mysql-logs/mysql.log
+
+```shell .env
+APP_SQL_LOG_ENABLE=true
+```
+
 ### 控制器
 
 ```app/Http/Controllers/Controller.php
