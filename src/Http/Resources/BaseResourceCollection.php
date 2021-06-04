@@ -5,7 +5,7 @@ namespace ZhenMu\LaravelInitTemplate\Http\Resources;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Pagination\AbstractPaginator;
 use Illuminate\Pagination\LengthAwarePaginator;
-use ZhenMu\LaravelInitTemplate\Traits\ResponseTrait;
+use ZhenMu\Support\Traits\ResponseTrait;
 
 class BaseResourceCollection extends ResourceCollection
 {

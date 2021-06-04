@@ -3,7 +3,7 @@
 namespace ZhenMu\LaravelInitTemplate\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use ZhenMu\LaravelInitTemplate\Traits\ResponseTrait;
+use ZhenMu\Support\Traits\ResponseTrait;
 
 class BaseResource extends JsonResource
 {
