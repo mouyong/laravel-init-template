@@ -196,7 +196,8 @@ COMPOSER_MEMORY_LIMIT=-1 composer require swooletw/laravel-swoole -vvv
 php artisan vendor:publish --tag=laravel-swoole
 ```
 
-```diff config/admin.php
+更新 `config/admin.php` 配置文件
+```diff
 -    'host' => env('SWOOLE_HTTP_HOST', '127.0.0.1'),
 -    'port' => env('SWOOLE_HTTP_PORT', '1215'),
 +    'host' => env('SWOOLE_HTTP_HOST', '0.0.0.0'),
