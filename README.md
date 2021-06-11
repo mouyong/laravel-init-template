@@ -188,6 +188,29 @@ Route::prefix('auth')->middleware('auth')->group(function () {
 
 ```shell
 git subtree add -P deploy/docker/ git@codeup.aliyun.com:5f10fd25d2481460393375d0/base/deploy/deploy-docker.git master
+
+cp deploy/docker/swoole/* .
+
+COMPOSER_MEMORY_LIMIT=-1 composer require swooletw/laravel-swoole -vvv
+
+php artisan vendor:publish --tag=laravel-swoole
+```
+
+```diff config/admin.php
+-    'host' => env('SWOOLE_HTTP_HOST', '127.0.0.1'),
+-    'port' => env('SWOOLE_HTTP_PORT', '1215'),
++    'host' => env('SWOOLE_HTTP_HOST', '0.0.0.0'),
++    'port' => env('SWOOLE_HTTP_PORT', '80'),
+
+    'instances' => [
+-       //
++        'auth',
+    ],
+
+    'providers' => [
+        Illuminate\Pagination\PaginationServiceProvider::class,
++        Dcat\Admin\AdminServiceProvider::class, // dact-admin
+    ],
 ```
 
 ## License
