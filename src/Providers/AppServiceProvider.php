@@ -80,10 +80,12 @@ class AppServiceProvider extends ServiceProvider
 
     private function publishConfig()
     {
-        $this->mergeConfigFrom($path = __DIR__.'/../../config/laravel-init-template.php', 'laravel-init-template');
+        $this->mergeConfigFrom(__DIR__.'/../../config/laravel-init-template.php', 'laravel-init-template');
+        $this->mergeConfigFrom(__DIR__.'/../../config/easysms.php', 'easysms');
 
         $this->publishes([
-            $path => config_path('laravel-init-template.php'),
+            __DIR__.'/../../config/laravel-init-template.php' => config_path('laravel-init-template.php'),
+            __DIR__.'/../../config/easysms.php' => config_path('easysms'),
         ], 'laravel-template-config');
     }
 

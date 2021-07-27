@@ -24,5 +24,10 @@ return [
             'level'  => 'debug',
             'days'   => 14,
         ],
-    ]
+    ],
+
+    'sms' => [
+        'code_debug' => env('SMS_CODE_DEBUG', false),
+        'default_code' => env('SMS_DEFAULT_CODE', '0000'),
+    ],
 ];
