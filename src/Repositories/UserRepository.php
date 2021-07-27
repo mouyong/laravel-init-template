@@ -26,7 +26,6 @@ class UserRepository
                 'realname' => $data['realname'] ?? null,
                 'avatar' => $data['avatar'] ?? null,
                 'id_card' => $data['id_card'] ?? null,
-                'password' => $data['password'] ?? 'zhenmu-123456',
                 'ip' => $data['ip'] ?? null,
             ]);
     }
