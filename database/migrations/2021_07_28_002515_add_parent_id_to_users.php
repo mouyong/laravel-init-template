@@ -17,8 +17,9 @@ class AddParentIdToUsers extends Migration
             $table->unsignedBigInteger('parent_id')->nullable()->after('id')->comment('用户 id，users.id');
             $table->string('avatar')->nullable()->after('name')->comment('用户头像');
             $table->string('name')->change();
-
             $table->string('password')->nullable()->change();
+
+            $table->dropUnique(['name']);
         });
     }
 
