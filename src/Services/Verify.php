@@ -85,13 +85,13 @@ class Verify
      * @param string $mobile
      * @param string $code
      *
+     * @param string|null $mobileCode
      * @return bool
      *
-     * @throws \RuntimeException
      */
-    public function validate(string $type, string $mobile, string $code)
+    public function validate(string $type, string $mobile, string $code, string $mobileCode = null)
     {
-        $cacheKey = self::VERIFY_TYPE[$type].$mobile;
+        $cacheKey = self::VERIFY_TYPE[$type].$mobileCode.$mobile;
 
         $cache = Cache::get($cacheKey);
         \info('使用验证码', [

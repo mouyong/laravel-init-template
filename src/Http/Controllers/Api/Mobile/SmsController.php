@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Mobile\Wechat;
+namespace ZhenMu\LaravelInitTemplate\Http\Controllers\Api\Mobile;
 
 use ZhenMu\LaravelInitTemplate\Http\Controllers\BaseController;
 use ZhenMu\LaravelInitTemplate\Services\Verify;
@@ -12,6 +12,7 @@ class SmsController extends BaseController
         \request()->validate([
             'mobile' => 'required',
             'mobile_code' => ['nullable', 'string'],
+            'type' => ['nullable', 'string'],
         ], [
             'mobile.required' => '手机号码不能为空',
         ]);
