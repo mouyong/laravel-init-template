@@ -138,6 +138,17 @@ class Demo extends BaseModel
 
 ### jwt 登录
 
+- 守卫配置 `config/auth.php`
+
+```config/auth.php
+'guards' => [
+    'jwt-api' => [
+        'driver' => 'jwt',
+        'provider' => 'users',
+    ],
+],
+```
+
 - 模型配置，引入 JwtUserTrait;
 
 ```app/Models/Admin.php

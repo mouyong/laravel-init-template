@@ -62,6 +62,6 @@ trait JwtUserTrait
 
     public function getJwtTokenAttribute()
     {
-        return auth()->login($this);
+        return auth('jwt-api')->login($this);
     }
 }

@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'user_model' => \ZhenMu\LaravelInitTemplate\Models\User::class,
+
+    'user_profile_model' => \ZhenMu\LaravelInitTemplate\Models\Profile::class,
+
+    'user_foreign_key' => 'user_id',
+
     'auth' => [
         'unauthorize_code' => 401,
     ],

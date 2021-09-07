@@ -17,21 +17,26 @@ class UserRepository
 
     public function createByOAuth(array $data)
     {
-        return User::query()
-            ->updateOrCreate([
-                'mobile' => $data['mobile'],
-            ], [
+        $user = User::query()
+            ->create([
                 'parent_id' => $data['parent_id'] ?? null,
                 'name' => $data['name'],
-                'realname' => $data['realname'] ?? null,
                 'avatar' => $data['avatar'] ?? null,
-                'id_card' => $data['id_card'] ?? null,
-                'ip' => $data['ip'] ?? null,
             ]);
+
+        $user->profile()->updateOrCreate([
+            'mobile' => $data['mobile'],
+        ], [
+            'realname' => $data['realname'] ?? null,
+            'id_card' => $data['id_card'] ?? null,
+
+        ]);
+        dump($user);
+        return $user;
     }
 
     public function findByMobile(string $mobile)
     {
-        return User::query()->where('mobile', $mobile)->first();
+        return User::query()->join('profiles', 'profiles.user_id', '=', 'users.id')->where('mobile', $mobile)->first();
     }
 }
