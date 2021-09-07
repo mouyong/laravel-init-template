@@ -138,6 +138,16 @@ class Demo extends BaseModel
 
 ### jwt 登录
 
+- 配置 `JWT_SECRET`、`JWT_TTL`
+
+```
+php artisan jwt:secret
+
+JWT_SECRET=
+# minutes of 3 day
+JWT_TTL=4320
+```
+
 - 守卫配置 `config/auth.php`
 
 ```config/auth.php
@@ -194,6 +204,37 @@ Route::prefix('auth')->middleware('auth')->group(function () {
     Route::post('me', [AuthController::class, 'me']);
 });
 ```
+
+### 文件上传七牛
+
+- 添加配置文件
+
+```filesystems.php
+return [
+   'disks' => [
+        //...
+        'qiniu' => [
+           'driver'     => 'qiniu',
+           'access_key' => env('QINIU_ACCESS_KEY', 'xxxxxxxxxxxxxxxx'),
+           'secret_key' => env('QINIU_SECRET_KEY', 'xxxxxxxxxxxxxxxx'),
+           'bucket'     => env('QINIU_BUCKET', 'test'),
+           'domain'     => env('QINIU_DOMAIN', 'xxx.clouddn.com'), // or host: https://xxxx.clouddn.com
+        ],
+        //...
+    ]
+];
+```
+
+- 配置环境变量
+
+```
+# 七牛
+QINIU_ACCESS_KEY=
+QINIU_SECRET_KEY=
+QINIU_BUCKET=
+QINIU_DOMAIN=https://your.domain.com
+```
+
 
 ### 部署
 

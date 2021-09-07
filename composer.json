@@ -13,7 +13,8 @@
         "zhenmu/support": "dev-master",
         "tymon/jwt-auth": "2.0.x-dev|^1",
         "symfony/cache": "^3.3 || ^4.3 || ^5.0",
-        "cblink/yapi-doc": "dev-master"
+        "cblink/yapi-doc": "dev-master",
+        "overtrue/laravel-filesystem-qiniu": "^1.0"
     },
     "autoload": {
         "psr-4": {
