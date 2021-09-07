@@ -3,7 +3,7 @@
 namespace ZhenMu\LaravelInitTemplate\Http\Controllers\Api\Common;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use zgldh\QiniuStorage\QiniuStorage;
 
 class QiniuController extends Controller
 {
@@ -14,13 +14,13 @@ class QiniuController extends Controller
             'expired_time' => ['nullable', 'integer', 'max:3600'],
         ]);
 
-        $qiniu = Storage::disk('qiniu');
+        $qiniu = QiniuStorage::disk('qiniu');
 
-        $token = $qiniu->getUploadToken(\request()->get('name'), \request()->get('expired_time', 3600));
+        $token = $qiniu->uploadToken(\request()->get('name'), \request()->get('expired_time', 3600));
 
         return $this->success([
             'token' => $token,
-            'domain' => config('filesystems.disks.qiniu.domain'),
+            'domain' => config('filesystems.disks.qiniu.domains.default'),
         ]);
     }
 }
