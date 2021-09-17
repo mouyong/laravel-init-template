@@ -16,10 +16,10 @@ class AddParentIdToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('parent_id')->nullable()->after('id')->comment('用户 id，users.id');
             $table->string('avatar')->nullable()->after('name')->comment('用户头像');
-            $table->string('name')->change();
+            $table->string('email')->change();
             $table->string('password')->nullable()->change();
 
-            $table->dropUnique(['name']);
+            $table->dropUnique(['email']);
         });
     }
 
@@ -33,7 +33,7 @@ class AddParentIdToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['parent_id']);
             $table->dropColumn(['avatar']);
-            $table->string('name')->unique()->change();
+            $table->string('email')->unique()->change();
             $table->string('password')->change();
         });
     }
