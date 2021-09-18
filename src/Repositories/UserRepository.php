@@ -29,9 +29,8 @@ class UserRepository
         ], [
             'realname' => $data['realname'] ?? null,
             'id_card' => $data['id_card'] ?? null,
-
         ]);
-        dump($user);
+
         return $user;
     }
 
