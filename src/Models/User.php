@@ -6,13 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use ZhenMu\LaravelInitTemplate\Traits\JwtUserTrait;
 use ZhenMu\LaravelInitTemplate\Traits\ModelSerializeDateTrait;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
     use JwtUserTrait;
     use ModelSerializeDateTrait;
 
@@ -24,13 +25,10 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'parent_id',
         'name',
-        'realname',
-        'mobile',
         'avatar',
         'id_card',
         'email',
         'password',
-        'ip',
     ];
 
     /**
