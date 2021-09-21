@@ -17,6 +17,10 @@ class UserRepository
 
     public function createByOAuth(array $data)
     {
+        if (!is_subclass_of(\App\Models\User::class, \ZhenMu\LaravelInitTemplate\Models\User::class)) {
+            throw new \LogicException("user doesn't have profile relation.");
+        }
+
         $user = User::query()
             ->create([
                 'parent_id' => $data['parent_id'] ?? null,
