@@ -247,9 +247,14 @@ QINIU_DOMAIN=https://your.domain.com
 ### 部署
 
 ```shell
-git subtree add -P deploy/docker/ git@codeup.aliyun.com:5f10fd25d2481460393375d0/base/deploy/deploy-docker.git master
+git subtree add -P deploy/ https://github.com/mouyong/docker-php.git master
 
-cp deploy/docker/swoole/* .
+# swoole 构建
+cp deploy/swoole/* .
+# 环境变量
+cp deploy/acm.sh .
+# 定时任务
+cp deploy/crontab .
 
 COMPOSER_MEMORY_LIMIT=-1 composer require swooletw/laravel-swoole -vvv
 
