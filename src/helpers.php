@@ -1,5 +1,16 @@
 <?php
 
+if (! file_exists('dcatadmin_bootstrap')) {
+    /**
+     * bootstrap laravel-init-template dcat admin
+     */
+    function dcatadmin_bootstrap() {
+        if (file_exists($dcatAdminBootstrapFile = base_path('vendor/zhenmu/laravel-init-template/src/DcatAdmin/bootstrap.php'))) {
+            require_once $dcatAdminBootstrapFile;
+        }
+    }
+}
+
 if (! function_exists('url_cache_key')) {
     /**
      * Get Current Request Cache Key.

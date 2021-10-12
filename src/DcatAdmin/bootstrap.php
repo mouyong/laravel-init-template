@@ -22,6 +22,7 @@ use Dcat\Admin\Support\Helper;
  * Admin::css('/packages/prettydocs/css/styles.css');
  * Admin::js('/packages/prettydocs/js/main.js');
  *
+ *
  */
 
 if (file_exists(public_path('css/app.css'))) {
@@ -61,6 +62,8 @@ Grid\Column::macro('customTree', function (bool $showAll = false, bool $sortable
             }
         }
     });
+
+
 
     return $this->displayUsing(\ZhenMu\LaravelInitTemplate\DcatAdmin\Grid\Displayers\Tree::class);
 });
