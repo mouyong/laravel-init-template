@@ -18,6 +18,17 @@ class Actions extends \Dcat\Admin\Grid\Displayers\Actions
         return "<i title='{$label}' class=\"feather icon-edit-1 grid-action-icon\"></i> $label &nbsp;";
     }
 
+    protected function getQuickEditLabel()
+    {
+        $label = trans('admin.edit');
+
+        if (empty($label)) {
+            $label = trans('admin.quick_edit');
+        }
+
+        return "<i title='{$label}' class=\"feather icon-edit grid-action-icon\"></i> $label &nbsp;";
+    }
+
     protected function getDeleteLabel()
     {
         $label = trans('admin.delete');
