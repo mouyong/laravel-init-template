@@ -11,11 +11,11 @@ if (! function_exists('dcatadmin_bootstrap')) {
     }
 }
 
-if (! function_exists('inject_menu')) {
+if (! function_exists('inject_menus')) {
     /**
      * inject menu to dcat admin
      */
-    function inject_menu($menuNodes = null) {
+    function inject_menus($menuNodes = null) {
         admin_inject_section(Admin::SECTION['LEFT_SIDEBAR_MENU'], function () use ($menuNodes) {
             $menuModel = config('admin.database.menu_model');
             $menuNodes = $menuNodes ?? (new $menuModel())->allNodes();
@@ -23,7 +23,7 @@ if (! function_exists('inject_menu')) {
             $builder = Admin::menu();
 
             $html = '';
-            foreach (Helper::buildNestedArray($menuNodes) as $item) {
+            foreach (\Dcat\Admin\Support\Helper::buildNestedArray($menuNodes) as $item) {
                 $html .= view('admin::partials.menu', ['item' => $item, 'builder' => $builder])->render();
             }
 
