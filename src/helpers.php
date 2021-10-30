@@ -1,6 +1,6 @@
 <?php
 
-if (! file_exists('dcatadmin_bootstrap')) {
+if (! function_exists('dcatadmin_bootstrap')) {
     /**
      * bootstrap laravel-init-template dcat admin
      */
@@ -8,6 +8,27 @@ if (! file_exists('dcatadmin_bootstrap')) {
         if (file_exists($dcatAdminBootstrapFile = base_path('vendor/zhenmu/laravel-init-template/src/DcatAdmin/bootstrap.php'))) {
             require_once $dcatAdminBootstrapFile;
         }
+    }
+}
+
+if (! function_exists('inject_menu')) {
+    /**
+     * inject menu to dcat admin
+     */
+    function inject_menu($menuNodes = null) {
+        admin_inject_section(Admin::SECTION['LEFT_SIDEBAR_MENU'], function () use ($menuNodes) {
+            $menuModel = config('admin.database.menu_model');
+            $menuNodes = $menuNodes ?? (new $menuModel())->allNodes();
+
+            $builder = Admin::menu();
+
+            $html = '';
+            foreach (Helper::buildNestedArray($menuNodes) as $item) {
+                $html .= view('admin::partials.menu', ['item' => $item, 'builder' => $builder])->render();
+            }
+
+            return $html;
+        }, false);
     }
 }
 
