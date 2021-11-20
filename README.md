@@ -67,7 +67,7 @@ APP_SQL_LOG_ENABLE=true
 
 namespace App\Http\Controllers;
 
-use ZhenMu\LaravelInitTemplate\Http\Controllers\BaseController;
+use ZhenMu\LaravelInitTemplate\Http\Controllers\BaseController as BaseController;
 
 class Controller extends BaseController
 {
@@ -125,11 +125,11 @@ class User extends \ZhenMu\LaravelInitTemplate\Models\User
 ```app/Models/Demo.php
 <?php
 
-namespace ZhenMu\LaravelInitTemplate\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Demo extends BaseModel
+class Demo extends \ZhenMu\LaravelInitTemplate\Models\BaseModel
 {
     use HasFactory;
 }
