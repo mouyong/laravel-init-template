@@ -132,6 +132,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Demo extends \ZhenMu\LaravelInitTemplate\Models\BaseModel
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
 
 ```
